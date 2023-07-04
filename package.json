@@ -1,6 +1,24 @@
 {
+  "name": "ows-event-landings",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18",
+    "nuxt": "^3.6.1"
+  },
   "dependencies": {
-    "@fastify/static": "^6.10.2",
-    "fastify": "^4.18.0"
+    "typescript": "^5.1.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "jiti": "1.18.2"
+    }
   }
 }
