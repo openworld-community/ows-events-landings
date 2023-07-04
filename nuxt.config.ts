@@ -1,4 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+   modules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
+   build: { transpile: ['trpc-nuxt'] },
+   tailwindcss: {},
+   googleFonts: { families: { Inter: true } },
+   devtools: { enabled: false },
 });
