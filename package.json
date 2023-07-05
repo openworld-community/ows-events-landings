@@ -1,40 +1,35 @@
 {
-	"name": "ows-event-landings",
-	"private": true,
-	"scripts": {
-		"build": "nuxt build",
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
-	},
-	"devDependencies": {
-		"@nuxt/devtools": "latest",
-		"@nuxt/eslint-config": "^0.1.1",
-		"@nuxtjs/eslint-module": "^4.1.0",
-		"@nuxtjs/google-fonts": "^3.0.1",
-		"@types/node": "^18",
-		"@typescript-eslint/eslint-plugin": "^5.61.0",
-		"@typescript-eslint/parser": "^5.61.0",
-		"eslint": "^8.44.0",
-		"eslint-plugin-nuxt": "^4.0.0",
-		"eslint-plugin-vue": "^9.15.1"
-	},
-	"dependencies": {
-		"@nuxtjs/tailwindcss": "^6.8.0",
-		"@trpc/client": "^10.33.0",
-		"@trpc/server": "^10.33.0",
-		"autoprefixer": "^10.4.14",
-		"nuxt": "^3.6.1",
-		"postcss": "^8.4.24",
-		"tailwindcss": "^3.3.2",
-		"trpc-nuxt": "^0.10.5",
-		"typescript": "^5.1.6",
-		"zod": "^3.21.4"
-	},
-	"pnpm": {
-		"overrides": {
-			"jiti": "1.18.2"
-		}
-	}
+   "name": "ows-event-landings",
+   "private": true,
+   "scripts": {
+      "build": "nuxt build",
+      "dev": "nuxt dev",
+      "generate": "nuxt generate",
+      "preview": "nuxt preview",
+      "postinstall": "nuxt prepare"
+   },
+   "devDependencies": {
+      "@nuxt/devtools": "latest",
+      "@nuxt/eslint-config": "^0.1.1",
+      "@nuxtjs/eslint-module": "^4.1.0",
+      "@nuxtjs/google-fonts": "^3.0.1",
+      "@types/node": "^18",
+      "@typescript-eslint/eslint-plugin": "^5.61.0",
+      "@typescript-eslint/parser": "^5.61.0",
+      "eslint": "^8.44.0",
+      "eslint-plugin-nuxt": "^4.0.0",
+      "eslint-plugin-vue": "^9.15.1"
+   },
+   "dependencies": {
+      "@nuxtjs/tailwindcss": "^6.8.0",
+      "@trpc/client": "^10.33.0",
+      "@trpc/server": "^10.33.0",
+      "autoprefixer": "^10.4.14",
+      "nuxt": "^3.6.1",
+      "postcss": "^8.4.24",
+      "tailwindcss": "^3.3.2",
+      "trpc-nuxt": "^0.10.5",
+      "typescript": "^5.1.6",
+      "zod": "^3.21.4"
+   }
 }
