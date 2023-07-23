@@ -21,5 +21,8 @@ module.exports = {
    rules: {
       'vue/html-indent': ['error', 3],
       'vue/singleline-html-element-content-newline': 'off',
+      'vue/multi-word-component-names': 'off',
+      'vue/html-self-closing': ['warn', { html: { void: 'always' } }],
    },
+   ignorePatterns: ['dist'],
 };
