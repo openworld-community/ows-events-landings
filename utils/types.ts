@@ -1,1 +1,1 @@
-export const ROUTE = Object.freeze({ PARSING: 'PARSING' });
+export const ROUTE = { PARSING: 'PARSING' } as const;
