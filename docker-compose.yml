@@ -1,10 +1,10 @@
-version: "3.7"
+version: '3.7'
 
 services:
-  pasing_landing:
-    build: .
-    restart: always
-    working_dir: /app
-    command: ["node", "src/server.mjs", "parsing-landing"]
-    ports:
-      - 3011:3000
+   pasing_landing:
+      build: .
+      restart: always
+      working_dir: /app
+      command: ['node', 'src/server.mjs', 'parsing-landing']
+      ports:
+         - 3011:3000
