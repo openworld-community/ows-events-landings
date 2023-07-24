@@ -11,5 +11,6 @@ useHead({
 });
 </script>
 <template>
+   <Html class="scroll-smooth" />
    <NuxtPage />
 </template>

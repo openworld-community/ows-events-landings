@@ -5,4 +5,6 @@ export default defineNuxtConfig({
    tailwindcss: {},
    googleFonts: { families: { Inter: true } },
    devtools: { enabled: false },
+   experimental: {},
+   alias: {},
 });

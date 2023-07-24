@@ -1,0 +1,13 @@
+{
+   "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "figma.figma-vscode-extension",
+      "cpylua.language-postcss",
+      "vunguyentuan.vscode-postcss",
+      "esbenp.prettier-vscode",
+      "yoavbls.pretty-ts-errors",
+      "bradlc.vscode-tailwindcss",
+      "vue.vscode-typescript-vue-plugin",
+      "vue.volar"
+   ]
+}
