@@ -52,7 +52,7 @@ const functionalityCard: {
       <header
          class="relative flex items-center justify-around gap-3 py-3 text-neutral-main after:absolute after:bottom-0 after:w-screen after:border-b-2 after:border-neutral-pale"
       >
-         <LogoSVG class="mr-6 shrink-0 text-neutral-black" />
+         <LogoSVG class="mr-6 h-4 shrink-0 text-neutral-black" />
          <nav class="flex grow gap-8 px-4 py-2">
             <NuxtLink
                v-for="navItem in navigation"
@@ -64,9 +64,9 @@ const functionalityCard: {
          </nav>
          <NuxtLink
             to="/"
-            class="flex gap-3"
+            class="flex items-center gap-3"
          >
-            <TelegramSVG class="text-blue-dark" />
+            <TelegramSVG class="h-6 text-blue-dark" />
             Написать в Telegram
          </NuxtLink>
       </header>
@@ -80,7 +80,7 @@ const functionalityCard: {
                <button
                   class="flex w-fit items-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-neutral-white"
                >
-                  Отправить запрос на подключение <ArrowRightSVG />
+                  Отправить запрос на подключение<ArrowRightSVG class="h-5" />
                </button>
                <ul class="mt-16 flex flex-col gap-3">
                   <li
@@ -91,7 +91,7 @@ const functionalityCard: {
                      <div
                         class="flex aspect-square h-9 items-center justify-center rounded-full bg-gradient-to-b from-neutral-light to-neutral-dark"
                      >
-                        <CheckmarkSVG class="text-neutral-white" />
+                        <CheckmarkSVG class="h-6 text-neutral-white" />
                      </div>
                      <span>
                         {{ text }}
@@ -113,7 +113,7 @@ const functionalityCard: {
                      :src="logo"
                      class="transition-transform hover:[transform:rotate3d(1,1,1,45deg)]"
                   />
-                  <h3 class="col-span-3 text-xl font-semibold">{{ title }}</h3>
+                  <h2 class="col-span-3 text-xl font-semibold">{{ title }}</h2>
                   <p class="col-span-full">
                      {{ description }}
                   </p>
