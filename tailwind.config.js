@@ -4,26 +4,24 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 /** @type {import('tailwindcss').Config} */
 export default {
    theme: {
-      colors: {
-         neutral: {
-            white: '#ffffff',
-            black: '#000000',
-            main: '#4e4e4e',
-            dark: '#323232',
-            light: '#616161',
-            pale: '#DBDBDB',
-         },
-         blue: {
-            dark: '#426EFF',
-            main: '#0A80EC',
-            light: '#03BCFF',
-            pale: {
-               main: '#CFDEF3',
-               light: '#E0EAFC',
+      extend: {
+         colors: {
+            neutral: {
+               main: '#4e4e4e',
+               dark: '#323232',
+               light: '#616161',
+               pale: '#DBDBDB',
+            },
+            blue: {
+               dark: '#426EFF',
+               main: '#0A80EC',
+               light: '#03BCFF',
+               pale: {
+                  main: '#CFDEF3',
+                  light: '#E0EAFC',
+               },
             },
          },
-      },
-      extend: {
          fontFamily: { sans: ['Inter', ...defaultTheme.fontFamily.sans] },
       },
    },
