@@ -1,30 +1,27 @@
 <script setup lang="ts">
-import LogoURL from '@/assets/parsing/logo.svg?url';
-
-import ArrowRightSVG from '@/assets/icons/arrow-right.svg?component';
-import CheckmarkSVG from '@/assets/icons/checkmark.svg?component';
-import LogoSVG from '@/assets/parsing/logo.svg?component';
-import TelegramSVG from '@/assets/parsing/telegram.svg?component';
+import InstagramLogoSVG from '@/assets/icons/instagram.svg?componentext';
+import TwitterLogoSVG from '@/assets/icons/twitter.svg?componentext';
+import LinkedInLogoSVG from '@/assets/icons/linked-in.svg?componentext';
+import FacebookLogoSVG from '@/assets/icons/facebook.svg?componentext';
+import TelegramLogoSVG from '@/assets/icons/telegram.svg?componentext';
 
 definePageMeta({ name: ROUTE.PARSING });
-useHead({ link: [{ rel: 'icon', href: LogoURL }] });
+useHead({ link: [{ rel: 'icon', href: '/parsing/favicon.ico' }] });
 useServerSeoMeta({
    title: 'EventsAPI',
    description:
       'API для поиска мероприятий в вашем городе. Мы предоставляем подробную информацию о каждом мероприятии, включая дату, время, место проведения, цену и многое другое.',
 });
 
-const navigation = {
+const headerNavigation = {
    functionality: { label: 'Функции', id: 'functionality' },
    advantage: { label: 'Преимущества', id: 'advantage' },
    benefits: { label: 'Польза для бизнеса', id: 'benefits' },
-   example: { label: 'Пример использования', id: 'example' },
    howTo: { label: 'Как подключить', id: 'how-to' },
 } satisfies Record<string, { label: string; id: Lowercase<string> }>;
 
 type Card = { title: string; description: string };
 type LogoCard = Card & { logo: string };
-
 const functionalityCards: LogoCard[] = [
    {
       title: 'Фильтровать по категориям',
@@ -99,19 +96,42 @@ const benefitCards: LogoCard[] = [
       logo: 'parsing/crowdfunding.png',
    },
 ];
+
+const footerNavigation = [
+   {
+      label: 'Об Афише',
+      href: '/',
+   },
+   {
+      label: 'Поддержать проект',
+      href: '/',
+   },
+   {
+      label: 'Поддержка',
+      href: '/',
+   },
+   {
+      label: 'Политика конфиденциальности',
+      href: '/',
+   },
+] satisfies { label: string; href: string }[];
+const socials = [
+   { icon: InstagramLogoSVG, href: '/#ig', label: 'Instagram' },
+   { icon: TwitterLogoSVG, href: '/#tw', label: 'Twitter' },
+   { icon: LinkedInLogoSVG, href: '/#li', label: 'LinkedIn' },
+   { icon: FacebookLogoSVG, href: '/#fb', label: 'Facebook' },
+   { icon: TelegramLogoSVG, href: '/#tg', label: 'Instagram' },
+] satisfies { icon: any; href: string; label: string }[];
 </script>
 <template>
-   <div class="m-auto max-w-[1440px] px-20 text-neutral-dark">
+   <div class="text-neutral-dark">
       <header
-         class="relative flex items-center justify-around gap-3 py-3 text-neutral-main after:absolute after:bottom-0 after:w-screen after:border-b-2 after:border-neutral-pale"
+         class="mx-auto flex max-w-[1440px] items-center justify-around gap-9 px-20 py-3 text-neutral-main"
       >
-         <LogoSVG
-            class="mr-6 h-4 shrink-0 text-black"
-            :height="16"
-         />
+         <ParsingLogo class="text-xl text-black" />
          <nav class="flex grow gap-8 px-4 py-2">
             <NuxtLink
-               v-for="navItem in navigation"
+               v-for="navItem in headerNavigation"
                :key="navItem.id"
                :to="{ hash: `#${navItem.id}` }"
             >
@@ -122,14 +142,16 @@ const benefitCards: LogoCard[] = [
             to="/"
             class="flex items-center gap-3"
          >
-            <TelegramSVG
-               class="h-6 text-blue-dark"
+            <SvgoParsingMessageUs
+               class="text-2xl text-blue-dark"
                :height="24"
+               :width="24"
             />
             Написать в Telegram
          </NuxtLink>
       </header>
-      <main>
+      <div class="bottom-0 border-b-2 border-neutral-pale" />
+      <main class="mx-auto max-w-[1440px] px-20 pb-20">
          <section class="grid grid-cols-2 font-medium">
             <div class="flex flex-col items-start justify-center gap-8">
                <h2 class="text-3xl leading-relaxed">
@@ -139,9 +161,11 @@ const benefitCards: LogoCard[] = [
                <button
                   class="flex items-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
                >
-                  Отправить запрос на подключение<ArrowRightSVG
-                     class="h-5"
+                  Отправить запрос на подключение
+                  <SvgoArrowRight
+                     class="text-xl"
                      :height="20"
+                     :width="20"
                   />
                </button>
                <ul class="mt-16 flex flex-col gap-3">
@@ -150,9 +174,10 @@ const benefitCards: LogoCard[] = [
                      :key="text"
                      class="flex items-center gap-4 text-2xl"
                   >
-                     <CheckmarkSVG
-                        class="h-9 rounded-full bg-gradient-to-b from-neutral-light to-neutral-dark p-1.5 text-white"
+                     <SvgoCheckmark
+                        class="rounded-full bg-gradient-to-b from-neutral-light to-neutral-dark p-1 text-2xl text-white"
                         :height="24"
+                        :width="24"
                      />
                      <span>
                         {{ text }}
@@ -162,10 +187,13 @@ const benefitCards: LogoCard[] = [
             </div>
             <NuxtImg
                src="parsing/funnel.png"
-               :height="729"
+               :height="640"
+               :width="640"
+               alt="Funnel with with images of different activities floating around"
+               format="webp"
             />
          </section>
-         <section :id="navigation.functionality.id">
+         <section :id="headerNavigation.functionality.id">
             <h1 class="py-10 text-5xl font-bold">Что умеет Events API</h1>
             <ul class="grid grid-cols-3 justify-center gap-5 text-black">
                <li
@@ -177,26 +205,30 @@ const benefitCards: LogoCard[] = [
                      <NuxtImg
                         :src="logo"
                         :height="72"
+                        :width="72"
+                        alt=""
+                        format="webp"
                      />
                      <h2 class="col-span-3 text-xl font-semibold">{{ title }}</h2>
                   </div>
-                  <p class="col-span-full">
+                  <p class="col-span-full text-neutral-main">
                      {{ description }}
                   </p>
                </li>
             </ul>
          </section>
-         <section :id="navigation.advantage.id">
+         <section :id="headerNavigation.advantage.id">
             <div class="mt-32 flex items-end justify-between py-10">
                <h1 class="text-5xl font-bold">Преимущества Events API</h1>
                <NuxtLink
-                  class="flex gap-3"
+                  class="flex items-center gap-3"
                   to="/"
                >
                   Узнать подробнее
-                  <ArrowRightSVG
-                     class="h-5"
+                  <SvgoArrowRight
+                     class="text-xl"
                      :height="20"
+                     :width="20"
                   />
                </NuxtLink>
             </div>
@@ -204,6 +236,9 @@ const benefitCards: LogoCard[] = [
                <NuxtImg
                   src="parsing/lightbulb.png"
                   :height="518"
+                  :width="518"
+                  alt="Display with a lightbulb in front"
+                  format="webp"
                />
                <ul class="grid gap-5 text-neutral-main">
                   <li
@@ -217,13 +252,13 @@ const benefitCards: LogoCard[] = [
                </ul>
             </div>
          </section>
-         <section :id="navigation.benefits.id">
+         <section :id="headerNavigation.benefits.id">
             <h1 class="mt-32 py-10 text-5xl font-bold">В чем выгода для бизнеса?</h1>
-            <ul class="grid grid-cols-2 gap-5">
+            <ul class="grid grid-cols-2 gap-5 text-neutral-main">
                <li
                   v-for="({ description, logo, title }, i) in benefitCards"
                   :key="title"
-                  class="rounded-2xl bg-gradient-to-r from-indigo-50 to-slate-100 px-8 py-7 text-neutral-main"
+                  class="rounded-2xl bg-gradient-to-r from-indigo-50 to-slate-100 px-8 py-7"
                   :class="[
                      i === benefitCards.length - 1 && !!(benefitCards.length % 2)
                         ? 'col-span-full grid grid-cols-2 grid-rows-1 items-center gap-20'
@@ -234,29 +269,26 @@ const benefitCards: LogoCard[] = [
                      <NuxtImg
                         :src="logo"
                         :height="72"
+                        :width="72"
+                        alt=""
+                        format="webp"
                      />
                      <h2 class="col-span-3 basis-2/3 text-3xl font-semibold leading-normal">
                         {{ title }}
                      </h2>
                   </div>
-                  <p class="">
+                  <p>
                      {{ description }}
                   </p>
                </li>
             </ul>
          </section>
-         <section
-            v-if="false"
-            :id="navigation.example.id"
-         >
-            <h1 class="py-10 text-5xl font-bold">{{ `` }}</h1>
-         </section>
-         <section :id="navigation.howTo.id">
+         <section :id="headerNavigation.howTo.id">
             <div class="mt-32 flex gap-9 py-10">
                <h1 class="basis-[120%] text-5xl font-bold leading-tight">
                   Как начать использовать Events API?
                </h1>
-               <p class="pt-3">
+               <p class="pt-3 text-neutral-main">
                   Пока что доступ к нашему API предоставляется только по заявкам от первых
                   пользователей. В будущем планируем расширить эту возможность для всех желающих.
                   Готовы начать?
@@ -264,7 +296,7 @@ const benefitCards: LogoCard[] = [
             </div>
             <div class="mx-auto flex w-1/2 flex-col items-stretch gap-6">
                <ul
-                  class="flex flex-col gap-4 rounded-2xl bg-gradient-to-r from-stone-100 to-neutral-100 px-9 py-8"
+                  class="flex flex-col gap-4 rounded-2xl bg-gradient-to-r from-stone-100 to-neutral-100 px-9 py-8 text-neutral-main"
                >
                   <li
                      v-for="(label, i) in [
@@ -300,15 +332,63 @@ const benefitCards: LogoCard[] = [
                      class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
                   >
                      Отправить запрос на подключение
-                     <ArrowRightSVG
-                        class="h-5"
+                     <SvgoArrowRight
+                        class="text-xl"
                         :height="20"
+                        :width="20"
                      />
                   </button>
                </form>
             </div>
          </section>
       </main>
-      <footer>1</footer>
+      <div class="bottom-0 border-b-2 border-neutral-pale" />
+      <footer
+         class="mx-auto grid max-w-[1440px] grid-cols-[1fr_max-content_1fr] items-center px-20 py-8 text-neutral-main"
+      >
+         <div>
+            <ParsingLogo class="text-xl" />
+            <span class="flex items-center gap-1">
+               Powered by
+               <SvgoLogo
+                  class="text-3xl"
+                  :height="30"
+                  :width="69"
+                  filled
+               />
+            </span>
+         </div>
+         <nav class="min-w-fit">
+            <ul
+               class="grid grid-cols-[max-content_max-content] content-stretch items-stretch justify-stretch gap-x-32 gap-y-4"
+            >
+               <li
+                  v-for="{ href, label } in footerNavigation"
+                  :key="label"
+               >
+                  <NuxtLink :to="href">{{ label }}</NuxtLink>
+               </li>
+            </ul>
+         </nav>
+         <ul class="ml-auto grid h-6 w-fit grid-flow-col gap-5 text-neutral-dark">
+            <li
+               v-for="{ href, icon, label } in socials"
+               :key="icon.name"
+               class="text-2xl"
+            >
+               <NuxtLink
+                  :to="href"
+                  :aria-label="label"
+               >
+                  <component
+                     :is="icon"
+                     :height="24"
+                     :width="24"
+                  />
+               </NuxtLink>
+            </li>
+         </ul>
+      </footer>
    </div>
 </template>
+<style module lang="postcss"></style>

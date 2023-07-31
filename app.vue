@@ -14,3 +14,9 @@ useHead({
    <Html class="scroll-smooth" />
    <NuxtPage />
 </template>
+<style>
+svg.nuxt-icon {
+   margin-bottom: 0;
+   width: unset;
+}
+</style>

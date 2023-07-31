@@ -12,7 +12,7 @@ Images should be used with `<NuxtImg/>` component and put into `public/` folder.
 
 ### SVG
 
-SVG images should be used with `vite-svg-loader` plugin - check [docs](https://github.com/jpkleemans/vite-svg-loader#import-params) for usage.
-Put them into `assets/` folder.
+SVG images should be used with `nuxt-svgo` module - check [docs](https://github.com/cpsoinos/nuxt-svgo) for usage.
+Put them into `assets/icons` folder.
 
 **Make sure SVG images have `viewBox` attribute set and `width` & `height` removed - otherwise the plugin will strip `viewBox` attribute for compression which will make image size fixed.**
