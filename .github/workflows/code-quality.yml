@@ -28,9 +28,9 @@ jobs:
            if: steps.node.outcome=='success'
          - run: pnpm lint
            name: Lint
-           if: steps.node.outcome.success==true
+           if: steps.node.outcome=='success'
          - run: pnpm check-format
            name: Format
-           if: steps.node.outcome.success==true
+           if: steps.node.outcome=='success'
          - run: pnpm build
            name: Build
