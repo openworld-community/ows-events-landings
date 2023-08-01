@@ -19,7 +19,7 @@ declare module '../assets/icons/*' {
    const component: typeof SVG;
    export default component;
 }
-declare module '@/assets/icons/*' {
+declare module '@/*.svg' {
    import SVG from '*.svg?componentext';
    const component: typeof SVG;
    export default component;
