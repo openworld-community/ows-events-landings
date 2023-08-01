@@ -124,7 +124,7 @@ const socials = [
 ] satisfies { icon: any; href: string; label: string }[];
 </script>
 <template>
-   <div class="text-neutral-dark">
+   <div class="min-w-fit text-neutral-dark">
       <header
          class="mx-auto flex max-w-[1440px] items-center justify-around gap-9 px-20 py-3 text-neutral-main"
       >

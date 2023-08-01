@@ -1,0 +1,35 @@
+name: code-quality
+on:
+   pull_request:
+      branches: 'main'
+      types: [opened, synchronize, reopened, ready_for_review]
+   push:
+      branches: 'main'
+jobs:
+   code-quality:
+      if: github.event.pull_request.draft==false
+      runs-on: ubuntu-latest
+      steps:
+         - uses: actions/checkout@v3
+           name: Setup workspace
+         - uses: pnpm/action-setup@v2.4.0
+           name: Setup pnpm
+           with:
+              run_install: true
+         - uses: actions/setup-node@v3
+           name: Setup node
+           with:
+              node-version: '>=16.10.0'
+              cache: 'pnpm'
+              cache-dependency-path: 'pnpm-lock.yaml'
+         - run: pnpm typecheck
+           name: Typecheck
+           if: always()
+         - run: pnpm lint
+           name: Lint
+           if: always()
+         - run: pnpm check-format
+           name: Format
+           if: always()
+         - run: pnpm build
+           name: Build
