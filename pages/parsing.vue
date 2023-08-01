@@ -4,7 +4,7 @@ import TwitterLogoSVG from '@/assets/icons/twitter.svg?componentext';
 import LinkedInLogoSVG from '@/assets/icons/linked-in.svg?componentext';
 import FacebookLogoSVG from '@/assets/icons/facebook.svg?componentext';
 import TelegramLogoSVG from '@/assets/icons/telegram.svg?componentext';
-1;
+
 definePageMeta({ name: ROUTE.PARSING });
 useHead({ link: [{ rel: 'icon', href: '/parsing/favicon.ico' }] });
 useServerSeoMeta({
