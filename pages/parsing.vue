@@ -129,7 +129,6 @@ const socials = [
          class="mx-auto flex max-w-[1440px] items-center justify-around gap-9 px-20 py-3 text-neutral-main"
       >
          <ParsingLogo class="text-xl text-black" />
-         222222
          <nav class="flex grow gap-8 px-4 py-2">
             <NuxtLink
                v-for="navItem in headerNavigation"
