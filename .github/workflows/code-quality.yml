@@ -25,12 +25,12 @@ jobs:
            name: Setup node_modules
          - run: pnpm typecheck
            name: Typecheck
-           if: steps.node.outcome.success
+           if: steps.node.outcome.success==true
          - run: pnpm lint
            name: Lint
-           if: steps.node.outcome.success
+           if: steps.node.outcome.success==true
          - run: pnpm check-format
            name: Format
-           if: steps.node.outcome.success
+           if: steps.node.outcome.success==true
          - run: pnpm build
            name: Build
