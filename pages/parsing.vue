@@ -135,8 +135,8 @@ const socials = [
                :key="navItem.id"
                :to="{ hash: `#${navItem.id}` }"
             >
-               {{ navItem.label }}
-            </NuxtLink>
+               {{ navItem.label }} </NuxtLink
+            >1
          </nav>
          <NuxtLink
             to="/"
