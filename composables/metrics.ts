@@ -8,7 +8,7 @@ export const UserTrackerIDKey = 'user_tracker_id';
  */
 export function useTrackUser() {
    return useState(UserTrackerIDKey, () => {
-      const cookie = useCookie(UserTrackerIDKey);
+      const cookie = useCookie(UserTrackerIDKey, { maxAge: 365 * 24 * 60 * 60 });
       cookie.value ??= nanoid();
       return cookie.value;
    }).value;

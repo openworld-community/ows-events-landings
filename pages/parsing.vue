@@ -6,6 +6,20 @@ useServerSeoMeta({
    description:
       'API для поиска мероприятий в вашем городе. Мы предоставляем подробную информацию о каждом мероприятии, включая дату, время, место проведения, цену и многое другое.',
 });
+const { $trpc } = useNuxtApp();
+
+const telegram = ref('');
+const email = ref('');
+const inputs = [
+   { placeholder: 'Ник в Telegram*', model: telegram },
+   { placeholder: 'E-mail*', type: 'email', model: email },
+];
+function sendContacts() {
+   useTrackInteraction('Sent contacts');
+   $trpc.contact
+      .mutate({ email: email.value || undefined, telegram: telegram.value || undefined })
+      .catch(e => console.error(e));
+}
 </script>
 <template>
    <div class="min-w-fit text-neutral-dark">
@@ -25,7 +39,7 @@ useServerSeoMeta({
          <NuxtLink
             to="/"
             class="flex items-center gap-3"
-            @click="useTrackInteraction('button_click')"
+            @click="useTrackInteraction('Contact us on telegram')"
          >
             <SvgoParsingMessageUs
                class="text-2xl text-blue-dark"
@@ -43,8 +57,10 @@ useServerSeoMeta({
                   Новый способ быстрого поиска мероприятий по всему миру
                </h2>
                <h1 class="whitespace-nowrap text-8xl font-bold leading-snug">Events API</h1>
-               <button
+               <NuxtLink
+                  :to="{ hash: `#${headerNavigation.howTo.id}` }"
                   class="flex items-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
+                  @click="useTrackInteraction('Go to contacts form')"
                >
                   Отправить запрос на подключение
                   <SvgoArrowRight
@@ -52,7 +68,7 @@ useServerSeoMeta({
                      :height="20"
                      :width="20"
                   />
-               </button>
+               </NuxtLink>
                <ul class="mt-16 flex flex-col gap-3">
                   <li
                      v-for="text in ['Для разработчиков ПО', 'Для организаторов мероприятий']"
@@ -108,6 +124,7 @@ useServerSeoMeta({
                <NuxtLink
                   class="flex items-center gap-3"
                   to="/"
+                  @click="useTrackInteraction('Learn more')"
                >
                   Узнать подробнее
                   <SvgoArrowRight
@@ -205,16 +222,16 @@ useServerSeoMeta({
                </ul>
                <form class="grid grid-rows-3 gap-3">
                   <input
-                     v-for="{ placeholder } in [
-                        { placeholder: 'Ник в Telegram*' },
-                        { placeholder: 'E-mail*' },
-                     ]"
-                     :key="placeholder"
-                     :placeholder="placeholder"
+                     v-for="(input, i) in inputs"
+                     :key="input.placeholder"
+                     v-model="inputs[i].model.value"
+                     :placeholder="input.placeholder"
+                     :type="input.type"
                      class="rounded-lg border border-neutral-pale px-5 py-3"
                   />
                   <button
                      class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
+                     @click.prevent="sendContacts"
                   >
                      Отправить запрос на подключение
                      <SvgoArrowRight
