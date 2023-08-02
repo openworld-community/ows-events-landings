@@ -9,6 +9,11 @@ useHead({
       },
    ],
 });
+
+useTrackUser();
+onMounted(() => {
+   useTrackInteraction('initial_page_load');
+});
 </script>
 <template>
    <Html class="scroll-smooth" />

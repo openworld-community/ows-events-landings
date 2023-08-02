@@ -25,6 +25,7 @@ useServerSeoMeta({
          <NuxtLink
             to="/"
             class="flex items-center gap-3"
+            @click="useTrackInteraction('button_click')"
          >
             <SvgoParsingMessageUs
                class="text-2xl text-blue-dark"

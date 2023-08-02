@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { JSONparse } from '../../utils';
+import { UserTrackerIDKey } from '../../composables/metrics';
 
 /**
  * Type definition taken [from](https://github.com/plausible/plausible-tracker/blob/c0b87d997d839938c23023d35bac0d6683635bbc/src/lib/request.ts#L6C5-L6C5) */
@@ -23,16 +25,21 @@ const plausibleEventSchema = z.object({
 
 export default defineEventHandler(async event => {
    const body = await readBody<unknown>(event);
+   const userID = getCookie(event, UserTrackerIDKey);
+   if (!userID) return createError({ statusCode: 403 });
+
    const parsedBody = plausibleEventSchema.safeParse(body);
    if (!parsedBody.success) return createError({ statusCode: 400 });
 
-   registerEvent(parsedBody.data);
-   return 'ok';
+   return registerEvent(userID, parsedBody.data);
 });
 
-function registerEvent(event: PlausibleEvent) {
-   console.log(event);
+function registerEvent(userID: string, event: PlausibleEvent) {
+   console.log({ userID, event });
    if (event.p) {
-      console.log(JSON.parse(event.p));
+      const parsedProps = JSONparse(event.p);
+      if (!parsedProps.success) return createError({ statusCode: 400 });
+      console.log(parsedProps.value);
    }
+   return 'ok';
 }
