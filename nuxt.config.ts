@@ -3,7 +3,6 @@ import 'vite-svg-loader';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
    modules: [
       '@nuxtjs/eslint-module',
@@ -19,7 +18,7 @@ export default defineNuxtConfig({
    vite: {},
    plausible: {
       // Events will by sent to {apiHost}/api/event
-      apiHost: isDev ? `http://localhost:3000/` : undefined,
+      apiHost: isDev ? `http://localhost:3000` : undefined,
       trackLocalhost: isDev,
    },
    tailwindcss: {},
