@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import InstagramLogoSVG from '@/assets/icons/instagram.svg?componentext';
-import TwitterLogoSVG from '@/assets/icons/twitter.svg?componentext';
-import LinkedInLogoSVG from '@/assets/icons/linked-in.svg?componentext';
-import FacebookLogoSVG from '@/assets/icons/facebook.svg?componentext';
-import TelegramLogoSVG from '@/assets/icons/telegram.svg?componentext';
-
 definePageMeta({ name: ROUTE.PARSING });
 useHead({ link: [{ rel: 'icon', href: '/parsing/favicon.ico' }] });
 useServerSeoMeta({
@@ -12,116 +6,20 @@ useServerSeoMeta({
    description:
       'API для поиска мероприятий в вашем городе. Мы предоставляем подробную информацию о каждом мероприятии, включая дату, время, место проведения, цену и многое другое.',
 });
+const { $trpc } = useNuxtApp();
 
-const headerNavigation = {
-   functionality: { label: 'Функции', id: 'functionality' },
-   advantage: { label: 'Преимущества', id: 'advantage' },
-   benefits: { label: 'Польза для бизнеса', id: 'benefits' },
-   howTo: { label: 'Как подключить', id: 'how-to' },
-} satisfies Record<string, { label: string; id: Lowercase<string> }>;
-
-type Card = { title: string; description: string };
-type LogoCard = Card & { logo: string };
-const functionalityCards: LogoCard[] = [
-   {
-      title: 'Фильтровать по категориям',
-      description:
-         'Спорт, искусство, музыка, конференции — находите мероприятия, которые подходят запросам ваших пользователей.',
-      logo: 'parsing/options.png',
-   },
-   {
-      title: 'Предоставлять подробную информацию',
-      description:
-         'Дата, время, место проведения, цена и все, что может быть полезно для вас и ваших пользователей. ',
-      logo: 'parsing/info.png',
-   },
-   {
-      title: 'Бесшовно интегрироваться',
-      description:
-         'Легкое внедрение API в ваши приложения и сервисы, обеспечивающее плавное взаимодействие и безопасность данных.',
-      logo: 'parsing/settings.png',
-   },
+const telegram = ref('');
+const email = ref('');
+const inputs = [
+   { placeholder: 'Ник в Telegram*', model: telegram },
+   { placeholder: 'E-mail*', type: 'email', model: email },
 ];
-const advantageCards: Card[] = [
-   {
-      title: 'Простота использования',
-      description:
-         'Удобный и интуитивно понятный интерфейс — вы легко и быстро найдете релевантные мероприятия.',
-   },
-   {
-      title: 'Быстрота и надежность',
-      description:
-         'Сервис работает бесперебойно, а результаты поиска можно получить в пару кликов.',
-   },
-   {
-      title: 'Гибкость и масштабируемость',
-      description:
-         'API, который легко настраивается под ваши потребности и может быть расширен с ростом вашего проекта.',
-   },
-   {
-      title: 'Глобальная доступность',
-      description:
-         'Наш API позволяет переводить мероприятия на множество языков — они доступны людям со всего мира, независимо от языковых предпочтений и культурных особенностей.',
-   },
-];
-const benefitCards: LogoCard[] = [
-   {
-      title: 'Станьте организатором мероприятий',
-      description:
-         'И получайте комиссию за продажи продажи билетов или привлечение участников через ваши площадки. Events API предоставляет информацию о мероприятиях, а ваш сайт или приложение может стать платформой для их продвижения.',
-      logo: 'parsing/calendar.png',
-   },
-   {
-      title: 'Забудьте о поиске вручную',
-      description:
-         'Вкладывать время и деньги лучше в развитие бизнеса, а не в рутинные задачи. Events API предоставит быстрый доступ к актуальной мероприятиям и избавит вас от необходимости искать события вручную.',
-      logo: 'parsing/processing.png',
-   },
-   {
-      title: 'Улучшите конверсию и пользовательский опыт',
-      description:
-         'Используйте собранную информацию о предпочтениях пользователей и персонализируйте рекомендации. Это сократит путь до целевого действия, увеличит конверсию в покупку или регистрацию и сделает ваш сервис более привлекательным для рекламодателей и партнеров.',
-      logo: 'parsing/doc.png',
-   },
-   {
-      title: 'Собирайте аналитику и монетизируйте ее',
-      description:
-         'Проводите аналитические исследования, опираясь на данные Events API, и расширьте спектр услуг для организаторов: от продажи отчетов по оптимизации процессов до разработки data-driven маркетинговых стратегий. ',
-      logo: 'parsing/chart.png',
-   },
-   {
-      title: 'Разрабатывайте собственные решения',
-      description:
-         'Events API можно использовать для создания дополнительных инструментов и функций: системы управления билетами, платформы для продажи онлайн или управления мероприятиями.',
-      logo: 'parsing/crowdfunding.png',
-   },
-];
-
-const footerNavigation = [
-   {
-      label: 'Об Афише',
-      href: '/',
-   },
-   {
-      label: 'Поддержать проект',
-      href: '/',
-   },
-   {
-      label: 'Поддержка',
-      href: '/',
-   },
-   {
-      label: 'Политика конфиденциальности',
-      href: '/',
-   },
-] satisfies { label: string; href: string }[];
-const socials = [
-   { icon: InstagramLogoSVG, href: '/#ig', label: 'Instagram' },
-   { icon: TwitterLogoSVG, href: '/#tw', label: 'Twitter' },
-   { icon: LinkedInLogoSVG, href: '/#li', label: 'LinkedIn' },
-   { icon: FacebookLogoSVG, href: '/#fb', label: 'Facebook' },
-   { icon: TelegramLogoSVG, href: '/#tg', label: 'Instagram' },
-] satisfies { icon: any; href: string; label: string }[];
+function sendContacts() {
+   useTrackInteraction('Sent contacts');
+   $trpc.contact
+      .mutate({ email: email.value || undefined, telegram: telegram.value || undefined })
+      .catch(e => console.error(e));
+}
 </script>
 <template>
    <div class="min-w-fit text-neutral-dark">
@@ -141,6 +39,7 @@ const socials = [
          <NuxtLink
             to="/"
             class="flex items-center gap-3"
+            @click="useTrackInteraction('Contact us on telegram')"
          >
             <SvgoParsingMessageUs
                class="text-2xl text-blue-dark"
@@ -158,8 +57,10 @@ const socials = [
                   Новый способ быстрого поиска мероприятий по всему миру
                </h2>
                <h1 class="whitespace-nowrap text-8xl font-bold leading-snug">Events API</h1>
-               <button
+               <NuxtLink
+                  :to="{ hash: `#${headerNavigation.howTo.id}` }"
                   class="flex items-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
+                  @click="useTrackInteraction('Go to contacts form')"
                >
                   Отправить запрос на подключение
                   <SvgoArrowRight
@@ -167,7 +68,7 @@ const socials = [
                      :height="20"
                      :width="20"
                   />
-               </button>
+               </NuxtLink>
                <ul class="mt-16 flex flex-col gap-3">
                   <li
                      v-for="text in ['Для разработчиков ПО', 'Для организаторов мероприятий']"
@@ -223,6 +124,7 @@ const socials = [
                <NuxtLink
                   class="flex items-center gap-3"
                   to="/"
+                  @click="useTrackInteraction('Learn more')"
                >
                   Узнать подробнее
                   <SvgoArrowRight
@@ -320,16 +222,16 @@ const socials = [
                </ul>
                <form class="grid grid-rows-3 gap-3">
                   <input
-                     v-for="{ placeholder } in [
-                        { placeholder: 'Ник в Telegram*' },
-                        { placeholder: 'E-mail*' },
-                     ]"
-                     :key="placeholder"
-                     :placeholder="placeholder"
+                     v-for="(input, i) in inputs"
+                     :key="input.placeholder"
+                     v-model="inputs[i].model.value"
+                     :placeholder="input.placeholder"
+                     :type="input.type"
                      class="rounded-lg border border-neutral-pale px-5 py-3"
                   />
                   <button
                      class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
+                     @click.prevent="sendContacts"
                   >
                      Отправить запрос на подключение
                      <SvgoArrowRight
