@@ -232,7 +232,7 @@ function sendContacts() {
                      class="rounded-lg border border-neutral-pale px-5 py-3"
                   />
                   <button
-                     class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white transition-[filter] disabled:saturate-[.6]"
+                     class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
                      :disabled="!telegram && !email"
                      @click.prevent="sendContacts"
                   >
