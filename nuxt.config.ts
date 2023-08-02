@@ -18,7 +18,7 @@ export default defineNuxtConfig({
    vite: {},
    plausible: {
       // Events will by sent to {apiHost}/api/event
-      apiHost: isDev ? `http://localhost:3000` : undefined,
+      apiHost: isDev ? `http://localhost:3000` : null,
       trackLocalhost: isDev,
    },
    tailwindcss: {},
