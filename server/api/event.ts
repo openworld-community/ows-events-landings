@@ -35,11 +35,9 @@ export default defineEventHandler(async event => {
 });
 
 function registerEvent(userID: string, event: PlausibleEvent) {
-   console.log({ userID, event });
    if (event.p) {
       const parsedProps = JSONparse(event.p);
       if (!parsedProps.success) return createError({ statusCode: 400 });
-      console.log(parsedProps.value);
    }
    return 'ok';
 }
