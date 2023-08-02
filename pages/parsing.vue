@@ -15,6 +15,8 @@ const inputs = [
    { placeholder: 'E-mail*', type: 'email', model: email },
 ];
 function sendContacts() {
+   if (!email.value && !telegram.value) return;
+
    useTrackInteraction('Sent contacts');
    $trpc.contact
       .mutate({ email: email.value || undefined, telegram: telegram.value || undefined })
@@ -230,7 +232,8 @@ function sendContacts() {
                      class="rounded-lg border border-neutral-pale px-5 py-3"
                   />
                   <button
-                     class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white"
+                     class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-blue-light to-blue-dark px-5 py-3 text-white transition-[filter] disabled:saturate-[.6]"
+                     :disabled="!telegram && !email"
                      @click.prevent="sendContacts"
                   >
                      Отправить запрос на подключение
