@@ -15,7 +15,7 @@ export default defineNuxtConfig({
    build: { transpile: ['trpc-nuxt'] },
    image: {},
    svgo: {},
-   vite: {},   
+   vite: {},
    plausible: {
       // Events will by sent to {apiHost}/api/event
       apiHost: isDev ? `http://localhost:3000` : '',
