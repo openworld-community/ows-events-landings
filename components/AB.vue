@@ -14,8 +14,10 @@ const props = defineProps<{
 }>();
 
 const userId = useTrackUser();
-const seeder = computed(() => seedrandom(`${userId}${props.name}`));
-const choice = computed(() => Math.floor(seeder.value() * props.variants.length));
+const seeder = computed(() => seedrandom.xor128(`${userId}${props.name}`).int32);
+const choice = computed(
+   () => ((seeder.value() % props.variants.length) + props.variants.length) % props.variants.length
+);
 </script>
 <template>
    <slot :name="variants[choice]"> Something went wrong </slot>
