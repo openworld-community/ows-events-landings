@@ -15,7 +15,7 @@ export function useTrackUser() {
 }
 
 /**
- * Global state with session ID to keep track of
+ * ID to keep track of individual page visit session
  * @returns session ID
  */
 function useTrackSession() {
