@@ -52,6 +52,9 @@ dependencies:
     version: 3.21.4
 
 devDependencies:
+  '@iconify-json/bi':
+    specifier: ^1.1.18
+    version: 1.1.18
   '@iconify-json/brandico':
     specifier: ^1.1.5
     version: 1.1.5
@@ -897,6 +900,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+
+  /@iconify-json/bi@1.1.18:
+    resolution: {integrity: sha512-nAQd+4Eb2SuYKg/5oa/dlvIudgF5d57VYGkF7P0JbuUipFHk0l2vAQ0CdKYaz0L66PO0rabWDln449lhBE2UJQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify-json/brandico@1.1.5:
     resolution: {integrity: sha512-SPrHC7BFZHkUudzTErz87C2LFpLXwQhE8ni/k9C42e/XMXqVR0TklPZ7y/8hcOjz8Yk4EaiYDghgZK7hZHY91A==}

@@ -15,6 +15,7 @@
       "postinstall": "nuxt prepare"
    },
    "devDependencies": {
+      "@iconify-json/bi": "^1.1.18",
       "@iconify-json/brandico": "^1.1.5",
       "@iconify-json/bx": "^1.1.7",
       "@iconify-json/icon-park-outline": "^1.1.12",
