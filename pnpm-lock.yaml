@@ -47,12 +47,6 @@ dependencies:
   typescript:
     specifier: ^5.1.6
     version: 5.1.6
-  unplugin-icons:
-    specifier: ^0.16.5
-    version: 0.16.5
-  unplugin-vue-components:
-    specifier: ^0.25.1
-    version: 0.25.1(vue@3.3.4)
   zod:
     specifier: ^3.21.4
     version: 3.21.4
@@ -70,6 +64,9 @@ devDependencies:
   '@iconify-json/maki':
     specifier: ^1.1.20
     version: 1.1.20
+  '@iconify-json/uil':
+    specifier: ^1.1.5
+    version: 1.1.5
   '@nuxt/devtools':
     specifier: latest
     version: 0.7.6(nuxt@3.6.5)(vite@4.4.6)
@@ -112,6 +109,12 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.4.1
     version: 0.4.1(prettier@3.0.0)
+  unplugin-icons:
+    specifier: ^0.16.5
+    version: 0.16.5
+  unplugin-vue-components:
+    specifier: ^0.25.1
+    version: 0.25.1(vue@3.3.4)
   vue-tsc:
     specifier: ^1.8.6
     version: 1.8.6(typescript@5.1.6)
@@ -139,10 +142,11 @@ packages:
     dependencies:
       execa: 5.1.1
       find-up: 5.0.0
-    dev: false
+    dev: true
 
   /@antfu/utils@0.7.5:
     resolution: {integrity: sha512-dlR6LdS+0SzOAPx/TPRhnoi7hE251OVeT2Snw0RguNbBSbjUHdWr0l3vcUUDg26rEysT89kCbtw1lVorBXLLCg==}
+    dev: true
 
   /@babel/code-frame@7.22.5:
     resolution: {integrity: sha512-Xmwn266vad+6DAqEB2A6V/CcZVp62BbwVmcOJc2RPuwih1kw02TjQvWVWlcKGbBPd+8/0V5DEkOcizRGYsspYQ==}
@@ -918,8 +922,15 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
+  /@iconify-json/uil@1.1.5:
+    resolution: {integrity: sha512-dp+tQ4fMGj0r1TAPc+9H3HADe70p7BVEktzIAUWH0lf9rZq++jHbjXFYtD3q4mVxBsFyrHwGFCoAiGGMK5G4ng==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
 
   /@iconify/utils@2.1.7:
     resolution: {integrity: sha512-P8S3z/L1LcV4Qem9AoCfVAaTFGySEMzFEY4CHZLkfRj0Fv9LiR+AwjDgrDrzyI93U2L2mg9JHsbTJ52mF8suNw==}
@@ -932,7 +943,7 @@ packages:
       local-pkg: 0.4.3
     transitivePeerDependencies:
       - supports-color
-    dev: false
+    dev: true
 
   /@ioredis/commands@1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
@@ -4990,6 +5001,7 @@ packages:
 
   /kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
+    dev: true
 
   /launch-editor@2.6.0:
     resolution: {integrity: sha512-JpDCcQnyAAzZZaZ7vEiSqL690w7dAEyLao+KC96zBplnYbJS7TYNjvM3M7y3dGz+v7aIsJk3hllWuc0kWAjyRQ==}
@@ -7821,7 +7833,7 @@ packages:
       unplugin: 1.4.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
+    dev: true
 
   /unplugin-vue-components@0.25.1(vue@3.3.4):
     resolution: {integrity: sha512-kzS2ZHVMaGU2XEO2keYQcMjNZkanDSGDdY96uQT9EPe+wqSZwwgbFfKVJ5ti0+8rGAcKHColwKUvctBhq2LJ3A==}
@@ -7850,7 +7862,7 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
-    dev: false
+    dev: true
 
   /unplugin-vue-router@0.6.4(vue-router@4.2.4)(vue@3.3.4):
     resolution: {integrity: sha512-9THVhhtbVFxbsIibjK59oPwMI1UCxRWRPX7azSkTUABsxovlOXJys5SJx0kd/0oKIqNJuYgkRfAgPuO77SqCOg==}
