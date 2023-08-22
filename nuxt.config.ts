@@ -1,7 +1,12 @@
-// for svg modules import type declarations
-import 'vite-svg-loader';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
+import IconsResolver from 'unplugin-icons/resolver';
+import Components from 'unplugin-vue-components/vite';
 
 const isDev = process.env.NODE_ENV !== 'production';
+
+const iconCollections = {
+   main: FileSystemIconLoader('./assets/icons'),
+};
 
 export default defineNuxtConfig({
    modules: [
@@ -9,13 +14,26 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       '@nuxtjs/google-fonts',
       '@nuxt/image',
-      'nuxt-svgo',
       '@nuxtjs/plausible',
+      [
+         'unplugin-icons/nuxt',
+         {
+            autoInstall: true,
+            scale: 1,
+            customCollections: iconCollections,
+         },
+      ],
    ],
    build: { transpile: ['trpc-nuxt'] },
    image: {},
-   svgo: {},
-   vite: {},
+   vite: {
+      plugins: [
+         Components({
+            resolvers: [IconsResolver({ customCollections: Object.keys(iconCollections) })],
+            types: [],
+         }),
+      ],
+   },
    plausible: {
       // Events will by sent to {apiHost}/api/event
       apiHost: isDev ? `http://localhost:3000` : '',

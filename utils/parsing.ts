@@ -1,8 +1,9 @@
-import InstagramLogoSVG from '@/assets/icons/instagram.svg?componentext';
-import TwitterLogoSVG from '@/assets/icons/twitter.svg?componentext';
-import LinkedInLogoSVG from '@/assets/icons/linked-in.svg?componentext';
-import FacebookLogoSVG from '@/assets/icons/facebook.svg?componentext';
-import TelegramLogoSVG from '@/assets/icons/telegram.svg?componentext';
+import InstagramLogoSVG from '~icons/bi/instagram';
+import TwitterLogoSVG from '~icons/bi/twitter';
+import LinkedInLogoSVG from '~icons/bx/bxl-linkedin';
+import FacebookLogoSVG from '~icons/brandico/facebook';
+import TelegramLogoSVG from '~icons/icon-park-outline/telegram';
+import type { FunctionalComponent, SVGAttributes } from 'nuxt/dist/app/compat/capi';
 
 export const headerNavigation = {
    functionality: { label: 'Функции', id: 'functionality' },
@@ -115,4 +116,4 @@ export const socials = [
    { icon: LinkedInLogoSVG, href: '/#li', label: 'LinkedIn' },
    { icon: FacebookLogoSVG, href: '/#fb', label: 'Facebook' },
    { icon: TelegramLogoSVG, href: '/#tg', label: 'Instagram' },
-] satisfies { icon: any; href: string; label: string }[];
+] satisfies { icon: FunctionalComponent<SVGAttributes>; href: string; label: string }[];

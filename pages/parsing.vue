@@ -43,11 +43,7 @@ function sendContacts() {
             class="flex items-center gap-3"
             @click="useTrackInteraction('Contact us on telegram')"
          >
-            <SvgoParsingMessageUs
-               class="text-2xl text-blue-dark"
-               :height="24"
-               :width="24"
-            />
+            <IUilMessage class="text-2xl text-blue-dark" />
             Написать в Telegram
          </NuxtLink>
       </header>
@@ -65,11 +61,7 @@ function sendContacts() {
                   @click="useTrackInteraction('Go to contacts form')"
                >
                   Отправить запрос на подключение
-                  <SvgoArrowRight
-                     class="text-xl"
-                     :height="20"
-                     :width="20"
-                  />
+                  <IMakiArrow class="text-xl" />
                </NuxtLink>
                <ul class="mt-16 flex flex-col gap-3">
                   <li
@@ -77,10 +69,8 @@ function sendContacts() {
                      :key="text"
                      class="flex items-center gap-4 text-2xl"
                   >
-                     <SvgoCheckmark
+                     <IMainCheckmark
                         class="rounded-full bg-gradient-to-b from-neutral-light to-neutral-dark p-1 text-2xl text-white"
-                        :height="24"
-                        :width="24"
                      />
                      <span>
                         {{ text }}
@@ -129,11 +119,7 @@ function sendContacts() {
                   @click="useTrackInteraction('Learn more')"
                >
                   Узнать подробнее
-                  <SvgoArrowRight
-                     class="text-xl"
-                     :height="20"
-                     :width="20"
-                  />
+                  <IMakiArrow class="text-xl" />
                </NuxtLink>
             </div>
             <div class="grid grid-cols-2 items-center">
@@ -237,11 +223,7 @@ function sendContacts() {
                      @click.prevent="sendContacts"
                   >
                      Отправить запрос на подключение
-                     <SvgoArrowRight
-                        class="text-xl"
-                        :height="20"
-                        :width="20"
-                     />
+                     <IMakiArrow class="text-xl" />
                   </button>
                </form>
             </div>
@@ -255,11 +237,9 @@ function sendContacts() {
             <ParsingLogo class="text-xl" />
             <span class="flex items-center gap-1">
                Powered by
-               <SvgoLogo
+               <IMainLogo
                   class="text-3xl"
-                  :height="30"
-                  :width="69"
-                  filled
+                  :width="undefined"
                />
             </span>
          </div>
@@ -285,11 +265,7 @@ function sendContacts() {
                   :to="href"
                   :aria-label="label"
                >
-                  <component
-                     :is="icon"
-                     :height="24"
-                     :width="24"
-                  />
+                  <component :is="icon" />
                </NuxtLink>
             </li>
          </ul>

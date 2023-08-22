@@ -12,7 +12,21 @@ Images should be used with `<NuxtImg/>` component and put into `public/` folder.
 
 ### SVG
 
-SVG images should be used with `nuxt-svgo` module - check [docs](https://github.com/cpsoinos/nuxt-svgo) for usage.
-Put them into `assets/icons` folder.
+SVG icons are supported through [Unplugin Icons](https://github.com/antfu/unplugin-icons).
 
-**Make sure SVG images have `viewBox` attribute set and `width` & `height` removed - otherwise the plugin will strip `viewBox` attribute for compression which will make image size fixed.**
+To add custom icon collections modify `iconCollections` variable in `nuxt.config.ts` like this. All `.svg` files in that directory will be supported for auto-importing.
+
+```ts
+const iconCollections = {
+   // will check for files like ./directory/*.svg, will not check for sub-directories
+   collection: FileSystemIconLoader('./directory'),
+};
+// and then use like
+import Icon from '~icons/collection/icon';
+// or in templates with auto-imports
+<ICollectionIcon />;
+```
+
+Icons are assumed to be square-shaped. If that's not the case then the most common solutions is to set `:width="undefined"`.
+
+**When adding custom collections make sure SVG files have their `viewBox` attribute set, `width` & `height` removed and set fill/stroke etc to `currentColor` where aplicable - so that these icons can be easily customizable.**
